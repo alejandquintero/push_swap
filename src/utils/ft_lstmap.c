@@ -6,17 +6,17 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 18:28:22 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/16 22:40:30 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:57:39 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_stack	*ft_lstmap(t_stack *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*head;
-	t_list	*aux;
-	t_list	*node;
+	t_stack	*head;
+	t_stack	*aux;
+	t_stack	*node;
 	int	number;
 
 	(void)f;
@@ -33,7 +33,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 			if (!node)
 			{
 				// del(str);
-				ft_lstclear(&head, del);
+				ft_lstclear(&head);
 				return (NULL);
 			}
 			ft_lstadd_back(&head, node);

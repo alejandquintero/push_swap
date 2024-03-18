@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:28:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/16 22:36:20 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/18 23:07:08 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,24 @@ int	ft_isdigit(int c);
 
 typedef struct s_stack
 {
-	char			*content;
+	int				number;
 	struct s_stack	*next;
 } t_stack;
 
-typedef struct s_list
-{
-    int            number;
-    struct s_list   *next;
-}   t_list;
-
-void    ft_lstadd_front(t_list **lst, t_list *new);
-void    ft_lstadd_back(t_list **lst, t_list *new);
-void    ft_lstdelone(t_list *lst, void (*del)(void*));
-void    ft_lstclear(t_list **lst, void (*del)(void*));
-void    ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstnew(int number);
-t_list	*ft_lstlast(t_list *lst);
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void	sa(t_stack **a);
+void	ra(t_stack **a);
+void	rra(t_stack **a);
+void    ft_lstadd_front(t_stack **lst, t_stack *new);
+void    ft_lstadd_back(t_stack **lst, t_stack *new);
+void    ft_lstdelone(t_stack *lst);
+void    ft_lstclear(t_stack **lst);
+// void    ft_lstiter(t_stack *lst, void (*f)(void *));
+t_stack	*ft_lstnew(int number);
+t_stack	*ft_lstlast(t_stack *lst);
+// t_stack	*ft_lstmap(t_stack *lst, void *(*f)(void *), void (*del)(void *));
+void print_stacks(t_stack *a, t_stack *b);
+void	s(t_stack **s);
+void	r(t_stack **s);
+void	rr(t_stack **s);
 
 #endif

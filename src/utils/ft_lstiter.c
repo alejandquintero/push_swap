@@ -6,15 +6,15 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:35:12 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/16 22:38:31 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:54:29 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_lstiter(t_stack *lst, void (*f)(void *))
 {
-	t_list	*aux;
+	t_stack	*aux;
 
 	(void)f;
 	if (lst != NULL)

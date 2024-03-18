@@ -6,11 +6,24 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:49:56 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/15 18:51:15 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/18 23:07:15 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	sa();
-void	ra();
-void	rra();
+#include "../../inc/push_swap.h"
+
+void	sa(t_stack **a)
+{
+	s(a);
+}
+
+void	ra(t_stack **a)
+{
+	r(a);	
+}
+
+void	rra(t_stack **a)
+{
+	rr(a);	
+}
 void	pa();

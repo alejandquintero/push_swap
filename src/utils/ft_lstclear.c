@@ -6,16 +6,16 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:11:16 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/16 21:40:23 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:56:15 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstclear(t_stack **lst)
 {
-	t_list	*aux;
-	t_list	*next;
+	t_stack	*aux;
+	t_stack	*next;
 
 	if (*lst != NULL)
 	{
@@ -23,7 +23,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		while (aux != NULL)
 		{
 			next = aux->next;
-			ft_lstdelone(aux, del);
+			ft_lstdelone(aux);
 			aux = next;
 		}
 		*lst = NULL;

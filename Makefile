@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 17:53:53 by aquinter          #+#    #+#              #
-#    Updated: 2024/03/16 21:59:11 by aquinter         ###   ########.fr        #
+#    Updated: 2024/03/18 21:52:14 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = gcc
 
-CFLAGS = -Wextra -Werror -Wall #-fsanitize=address
+CFLAGS = -Wextra -Werror -Wall -g #-fsanitize=address
 
 RM = rm -rf
 
@@ -28,7 +28,10 @@ SRC = main.c \
 	src/utils/ft_lstiter.c \
 	src/utils/ft_lstnew.c \
 	src/utils/ft_lstlast.c \
-	src/utils/ft_lstmap.c 
+	src/utils/ft_lstmap.c \
+	src/utils/print_stacks.c \
+	src/movements/stack_a.c \
+	src/movements/s.c  
 
 OBJ = ${SRC:%.c=%.o}
 
