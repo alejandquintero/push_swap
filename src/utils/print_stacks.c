@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 21:10:31 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/18 21:13:17 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/21 21:56:43 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 
 void print_stacks(t_stack *a, t_stack *b)
 {
-	t_stack *aux_a;
-	t_stack *aux_b;
-	aux_a = a;
-	aux_b = b;
-	while (aux_a != NULL && aux_b != NULL)
+	while (a != NULL || b != NULL)
 	{
-		printf("%d\t%d\n", aux_a->number, aux_b->number);
-		aux_a = aux_a->next;
-		aux_b = aux_b->next;
+		if (a != NULL){
+			printf("%d\t", a->number);
+			a = a->next;			
+		}
+		else
+			printf("null\t");
+		if (b != NULL){
+			printf("%d\n", b->number);
+			b = b->next;
+		}
+		else
+			printf("null\t\n");
 	}
 }

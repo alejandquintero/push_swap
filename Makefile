@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 17:53:53 by aquinter          #+#    #+#              #
-#    Updated: 2024/03/18 21:52:14 by aquinter         ###   ########.fr        #
+#    Updated: 2024/03/21 22:09:23 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC = main.c \
 	src/utils/ft_lstmap.c \
 	src/utils/print_stacks.c \
 	src/movements/stack_a.c \
+	src/movements/stack_b.c \
 	src/movements/s.c  
 
 OBJ = ${SRC:%.c=%.o}
