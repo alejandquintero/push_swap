@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 17:53:53 by aquinter          #+#    #+#              #
-#    Updated: 2024/03/21 22:09:23 by aquinter         ###   ########.fr        #
+#    Updated: 2024/03/22 23:25:58 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,10 @@ SRC = main.c \
 	src/utils/print_stacks.c \
 	src/movements/stack_a.c \
 	src/movements/stack_b.c \
-	src/movements/s.c  
+	src/movements/simultaneous.c \
+	src/movements/operations.c \
+	src/algorithm/is_sorted.c \
+	src/algorithm/sort_three.c
 
 OBJ = ${SRC:%.c=%.o}
 

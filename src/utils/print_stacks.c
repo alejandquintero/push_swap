@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 21:10:31 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/21 21:56:43 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/22 23:29:54 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ void print_stacks(t_stack *a, t_stack *b)
 		else
 			printf("null\t\n");
 	}
+	printf("\n");
 }
