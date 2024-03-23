@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:23:03 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/22 23:27:20 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:05:59 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "inc/push_swap.h"
 
-int	main(int argc, char *argv[])	
+int	main(int argc, char *argv[])
 {
 	(void)argc;
 

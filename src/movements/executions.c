@@ -1,44 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_three.c                                       :+:      :+:    :+:   */
+/*   executions.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 21:59:31 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/23 17:42:43 by aquinter         ###   ########.fr       */
+/*   Created: 2024/03/23 17:24:43 by aquinter          #+#    #+#             */
+/*   Updated: 2024/03/23 17:36:58 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void	sort_three(t_stack **s, char stack)
+void	exec(t_stack **s, char *movement, char stack)
 {
-	int	a;
-	int	b;
-	int	c;
-
-	a = (*s)->number;
-	b = (*s)->next->number;
-	c = (*s)->next->next->number;
-	if (!is_sorted(*s))
+	if (movement == "swap")
 	{
-		if (a < b)
-		{
-			exec(s, "reverse", stack);
-			if (a < c)
-				exec(s, "swap", stack);
-		}
-		else
-		{
-			if (a > c)
-			{
-				exec(s, "rotate", stack);
-				if (b > c)
-					exec(s, "swap", stack);
-			}
-			else
-				exec(s, "swap", stack);
-		}
+		printf("s%c\n", stack);
+		swap(s);	
+	}
+	else if (movement == "rotate")
+	{
+		printf("r%c\n", stack);
+		rotate(s);
+	}
+	else if (movement == "reverse")
+	{
+		printf("rr%c\n", stack);
+		reverse(s);
 	}
 }

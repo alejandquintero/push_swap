@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:28:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/22 23:25:44 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/23 17:37:13 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	reverse(t_stack **s);
 void	push(t_stack **from, t_stack **to);
 bool 	is_sorted(t_stack *s);
 void	sort_three(t_stack **s);
+void	print_sorted_stack(t_stack *a);
+void	exec(t_stack **s, char *movement, char stack);
 
 
 #endif

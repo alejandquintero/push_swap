@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 17:53:53 by aquinter          #+#    #+#              #
-#    Updated: 2024/03/22 23:25:58 by aquinter         ###   ########.fr        #
+#    Updated: 2024/03/23 17:44:11 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wextra -Werror -Wall -g #-fsanitize=address
 
 RM = rm -rf
 
-SRC = main.c \
+SRC = src/push_swap.c \
 	src/utils/ft_atoi.c \
 	src/utils/ft_isdigit.c \
 	src/utils/ft_lstadd_front.c \
@@ -30,12 +30,13 @@ SRC = main.c \
 	src/utils/ft_lstlast.c \
 	src/utils/ft_lstmap.c \
 	src/utils/print_stacks.c \
-	src/movements/stack_a.c \
-	src/movements/stack_b.c \
+	src/stacks/a.c \
+	src/stacks/b.c \
+	src/movements/executions.c \
 	src/movements/simultaneous.c \
 	src/movements/operations.c \
 	src/algorithm/is_sorted.c \
-	src/algorithm/sort_three.c
+	src/algorithm/sort_three.c \
 
 OBJ = ${SRC:%.c=%.o}
 
