@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 16:05:38 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/25 21:59:55 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:25:03 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 int	main(int argc, char *argv[])
 {
-	(void)argc;
+	int		i;
+	t_stack	*a;
+	t_stack	*b;
 
-	int i = 1;
-	t_stack *a;
-	t_stack *b;
+	(void)argc;
+	i = 1;
 	a = NULL;
 	b = NULL;
 	while (argv[i])

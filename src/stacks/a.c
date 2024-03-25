@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:49:56 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/25 22:03:23 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:26:02 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ void	sa(t_stack **a)
 void	ra(t_stack **a)
 {
 	ft_printf("ra\n");
-	rotate(a);	
+	rotate(a);
 }
 
 void	rra(t_stack **a)
 {
 	ft_printf("rra\n");
-	reverse(a);	
+	reverse(a);
 }
 
 void	pa(t_stack **b, t_stack **a)
 {
 	ft_printf("pa\n");
-	push(b, a);	
+	push(b, a);
 }

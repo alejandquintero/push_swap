@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 21:41:19 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/25 22:05:20 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:29:54 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	swap(t_stack **s)
 {
-	t_stack *aux;
+	t_stack	*aux;
 
 	if (*s != NULL && (*s)->next != NULL)
 	{
@@ -27,7 +27,7 @@ void	swap(t_stack **s)
 
 void	rotate(t_stack **s)
 {
-	t_stack *aux;
+	t_stack	*aux;
 
 	if (*s != NULL)
 	{
@@ -40,9 +40,8 @@ void	rotate(t_stack **s)
 
 void	reverse(t_stack **s)
 {
-	t_stack *aux;
-	t_stack *last;
-	(void)last;
+	t_stack	*aux;
+	t_stack	*last;
 
 	if (*s != NULL && (*s)->next != NULL)
 	{
@@ -57,8 +56,8 @@ void	reverse(t_stack **s)
 
 void	push(t_stack **from, t_stack **to)
 {
-	t_stack *head_from;
-	t_stack *head_to;
+	t_stack	*head_from;
+	t_stack	*head_to;
 
 	if (*from != NULL)
 	{
