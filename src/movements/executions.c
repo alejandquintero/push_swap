@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:24:43 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/23 17:36:58 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:15:38 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	exec(t_stack **s, char *movement, char stack)
 {
-	if (movement == "swap")
+	if (ft_strncmp(movement, "swap", 4) == 0)
 	{
-		printf("s%c\n", stack);
+		ft_printf("s%c\n", stack);
 		swap(s);	
 	}
-	else if (movement == "rotate")
+	else if (ft_strncmp(movement, "rotate", 6) == 0)
 	{
-		printf("r%c\n", stack);
+		ft_printf("r%c\n", stack);
 		rotate(s);
 	}
-	else if (movement == "reverse")
+	else if (ft_strncmp(movement, "reverse", 7) == 0)
 	{
-		printf("rr%c\n", stack);
+		ft_printf("rr%c\n", stack);
 		reverse(s);
 	}
 }

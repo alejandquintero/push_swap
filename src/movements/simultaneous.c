@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:51:28 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/22 23:29:04 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:03:23 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	ss(t_stack **a, t_stack **b)
 {
-	printf("ss\n");
+	ft_printf("ss\n");
 	sa(a);
 	sb(b);
 }
 
 void	rr(t_stack **a, t_stack **b)
 {
-	printf("rr\n");
+	ft_printf("rr\n");
 	ra(a);
 	rb(b);
 }
 
 void	rrr(t_stack **a, t_stack **b)
 {
-	printf("rrr\n");
+	ft_printf("rrr\n");
 	rra(a);
 	rrb(b);
 }

@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 21:10:31 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/23 16:15:13 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:03:23 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,27 @@ void print_stacks(t_stack *a, t_stack *b)
 	while (a != NULL || b != NULL)
 	{
 		if (a != NULL){
-			printf("%d\t", a->number);
+			ft_printf("%d\t", a->number);
 			a = a->next;			
 		}
 		else
-			printf("null\t");
+			ft_printf("null\t");
 		if (b != NULL){
-			printf("%d\n", b->number);
+			ft_printf("%d\n", b->number);
 			b = b->next;
 		}
 		else
-			printf("null\t\n");
+			ft_printf("null\t\n");
 	}
-	printf("\n");
+	ft_printf("\n");
 }
 
 void	print_sorted_stack(t_stack *a)
 {
 	while (a->next != NULL)
 	{
-		printf("%d ", a->number);
+		ft_printf("%d ", a->number);
 		a = a->next;	
 	}
-	printf("%d", a->number);
+	ft_printf("%d", a->number);
 }

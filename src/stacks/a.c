@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_a.c                                          :+:      :+:    :+:   */
+/*   a.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:49:56 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/22 23:28:11 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:03:23 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 void	sa(t_stack **a)
 {
-	printf("sa\n");
+	ft_printf("sa\n");
 	swap(a);
 }
 
 void	ra(t_stack **a)
 {
-	printf("ra\n");
+	ft_printf("ra\n");
 	rotate(a);	
 }
 
 void	rra(t_stack **a)
 {
-	printf("rra\n");
+	ft_printf("rra\n");
 	reverse(a);	
 }
 
 void	pa(t_stack **b, t_stack **a)
 {
-	printf("pa\n");
+	ft_printf("pa\n");
 	push(b, a);	
 }

@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 21:41:19 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/22 21:22:39 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:05:20 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	rotate(t_stack **s)
 		aux = *s;
 		*s = (*s)->next;
 		aux->next = NULL;
-		ft_lstadd_back(s, aux);
+		stack_add_back(s, aux);
 	}
 }
 
@@ -46,12 +46,12 @@ void	reverse(t_stack **s)
 
 	if (*s != NULL && (*s)->next != NULL)
 	{
-		last = ft_lstlast(*s);
+		last = stack_last(*s);
 		aux = *s;
 		while (aux->next->next != NULL)
 			aux = aux->next;
 		aux->next = NULL;
-		ft_lstadd_front(s, last);
+		stack_add_front(s, last);
 	}
 }
 
