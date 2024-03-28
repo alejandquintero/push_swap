@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 17:53:53 by aquinter          #+#    #+#              #
-#    Updated: 2024/03/25 22:02:36 by aquinter         ###   ########.fr        #
+#    Updated: 2024/03/28 22:36:05 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC = $(addprefix $(SRC_DIR), \
 	movements/simultaneous.c \
 	movements/operations.c \
 	algorithm/is_sorted.c \
+	algorithm/utils.c \
 	algorithm/sort_three.c)
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:$(SRC_DIR)%.c=%.o))

@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 21:50:35 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/25 21:57:33 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/28 22:38:21 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ t_stack	*stack_new(int number)
 	if (!new_node)
 		return (NULL);
 	(*new_node).next = NULL;
-	(*new_node).number = number;
+	(*new_node).nbr = number;
 	return (new_node);
 }

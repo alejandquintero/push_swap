@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:28:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/25 22:23:43 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/28 23:05:44 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef struct s_stack
 {
-	int				number;
+	int				nbr;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -45,9 +45,12 @@ void	swap(t_stack **s);
 void	rotate(t_stack **s);
 void	reverse(t_stack **s);
 void	push(t_stack **from, t_stack **to);
-void	sort_three(t_stack **s, char stack);
+void	sort_three(t_stack **s);
 void	print_sorted_stack(t_stack *a);
 void	exec(t_stack **s, char *movement, char stack);
 bool	is_sorted(t_stack *s);
+t_stack *get_min_node(t_stack *s);
+t_stack *get_max_node(t_stack *s);
+t_stack *get_target_node(int nbr, t_stack *s);
 
 #endif

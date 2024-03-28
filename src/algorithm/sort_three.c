@@ -6,39 +6,32 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 21:59:31 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/23 17:42:43 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/03/28 22:38:37 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void	sort_three(t_stack **s, char stack)
+void	sort_three(t_stack **s)
 {
-	int	a;
-	int	b;
-	int	c;
-
-	a = (*s)->number;
-	b = (*s)->next->number;
-	c = (*s)->next->next->number;
 	if (!is_sorted(*s))
 	{
-		if (a < b)
+		if ((*s)->nbr < (*s)->next->nbr)
 		{
-			exec(s, "reverse", stack);
-			if (a < c)
-				exec(s, "swap", stack);
+			rra(s);
+			if ((*s)->nbr < (*s)->next->next->nbr)
+				sa(s);
 		}
 		else
 		{
-			if (a > c)
+			if ((*s)->nbr > (*s)->next->next->nbr)
 			{
-				exec(s, "rotate", stack);
-				if (b > c)
-					exec(s, "swap", stack);
+				ra(s);
+				if ((*s)->next->nbr > (*s)->next->next->nbr)
+					sa(s);
 			}
 			else
-				exec(s, "swap", stack);
+				sa(s);
 		}
 	}
 }
