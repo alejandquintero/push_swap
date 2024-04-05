@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 16:05:38 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/28 23:27:56 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/06 01:11:38 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,40 @@ int	main(int argc, char *argv[])
 	
 	pb(&a, &b);	
 	pb(&a, &b);	
+	pb(&a, &b);
+	rrb(&b);
+	pb(&a, &b);
+	rb(&b);
+	pb(&a, &b);
+	sort_three(&a);
+	pa(&b, &a);
+	rra(&a);
+	rra(&a);
+	pa(&b, &a);
+	pa(&b, &a);
+	pa(&b, &a);
+	pa(&b, &a);
+	rra(&a);
 	
 	print_stacks(a, b);
 
-	t_stack *aux = a;
+	// t_stack *aux = a;
+	// while (aux)
+	// {
+	// 	t_stack *target = get_smaller_target_node(aux->nbr, b);
+	// 	ft_printf("Small Target node %d -> ", aux->nbr);
+	// 	ft_printf("%d\n", target->nbr);
+	// 	aux = aux->next;
+	// }
 
+	t_stack *aux = b;
 	while (aux)
 	{
-		t_stack *target = get_target_node(aux->nbr, b);
-		ft_printf("Target node %d -> ", aux->nbr);
+		t_stack *target = get_bigger_target_node(aux->nbr, a);
+		ft_printf("Big Target node %d -> ", aux->nbr);
 		ft_printf("%d\n", target->nbr);
 		aux = aux->next;
 	}
-	
-
 
 	
 	// sort_three(&a);

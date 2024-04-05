@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:28:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/28 23:05:44 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/06 00:00:01 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	exec(t_stack **s, char *movement, char stack);
 bool	is_sorted(t_stack *s);
 t_stack *get_min_node(t_stack *s);
 t_stack *get_max_node(t_stack *s);
-t_stack *get_target_node(int nbr, t_stack *s);
+t_stack *get_smaller_target_node(int nbr, t_stack *s);
+t_stack *get_bigger_target_node(int nbr, t_stack *s);
 
 #endif

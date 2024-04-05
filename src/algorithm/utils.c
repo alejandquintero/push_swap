@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 22:19:58 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/28 23:21:04 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/06 00:01:59 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,41 +50,65 @@ t_stack *get_max_node(t_stack *s)
 	return (max);
 }
 
-t_stack *get_target_node(int nbr, t_stack *s)
+t_stack *get_smaller_target_node(int nbr, t_stack *s)
 {
 	t_stack *target;
+	t_stack *aux;
 	int		shortest_dist;
 	int		dist;
-	
+
 	target = NULL;
 	shortest_dist = 0;
-	if (s != NULL)
+	aux = s;
+	if (aux != NULL)
 	{
-		while (s != NULL)
+		while (aux != NULL)
 		{
-			dist = nbr - s->nbr;
-			// ft_printf("\ndist %d\n", dist);
-
-			if (dist < 0)
+			if (nbr > aux->nbr)
 			{
-				// Bigger
-			}
-			else
-			{
-				if ((shortest_dist == 0 && dist > 0) ||
-					(dist < shortest_dist))
+				dist = nbr - aux->nbr;
+				if (shortest_dist == 0 || dist < shortest_dist)
 				{
 					shortest_dist = dist;
-					target = s;
-					// ft_printf("\naqui 1 %d\n", target->nbr);
-					
+					target = aux;
 				}
 			}
-			s = s->next;
+			aux = aux->next;
 		}
-		
+		if (shortest_dist == 0)
+			target = get_max_node(s);
 	}
-	// ft_printf("\nreturn target 1 %d\n", target->nbr);
-	return (target);	
+	return (target);
+}
+
+t_stack *get_bigger_target_node(int nbr, t_stack *s)
+{
+	t_stack *target;
+	t_stack *aux;
+	int		shortest_dist;
+	int		dist;
+
+	target = NULL;
+	shortest_dist = 0;
+	aux = s;
+	if (aux != NULL)
+	{
+		while (aux != NULL)
+		{
+			if (nbr < aux->nbr)
+			{
+				dist = aux->nbr - nbr;
+				if (shortest_dist == 0 || dist < shortest_dist)
+				{
+					shortest_dist = dist;
+					target = aux;
+				}
+			}
+			aux = aux->next;
+		}
+		if (shortest_dist == 0)
+			target = get_min_node(s);
+	}
+	return (target);
 }
 // t_stack get_last_node(t_stack *s)
