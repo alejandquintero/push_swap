@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:28:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/06 00:00:01 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/06 16:07:09 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 typedef struct s_stack
 {
 	int				nbr;
+	int				cost;
+	char			*mov;
+	struct s_stack	*target;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -49,9 +52,13 @@ void	sort_three(t_stack **s);
 void	print_sorted_stack(t_stack *a);
 void	exec(t_stack **s, char *movement, char stack);
 bool	is_sorted(t_stack *s);
-t_stack *get_min_node(t_stack *s);
-t_stack *get_max_node(t_stack *s);
-t_stack *get_smaller_target_node(int nbr, t_stack *s);
-t_stack *get_bigger_target_node(int nbr, t_stack *s);
+t_stack	*get_min_node(t_stack *s);
+t_stack	*get_max_node(t_stack *s);
+t_stack	*get_smaller_target_node(int nbr, t_stack *s);
+t_stack	*get_bigger_target_node(int nbr, t_stack *s);
+int		stack_len(t_stack *s);
+void	sort(t_stack **a, t_stack **b);
+void	sort_two(t_stack **s);
+void	sort_n(t_stack **a, t_stack **b);
 
 #endif

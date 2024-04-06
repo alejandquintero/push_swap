@@ -6,15 +6,15 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 22:19:58 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/06 00:01:59 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/06 16:10:02 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-t_stack *get_min_node(t_stack *s)
+t_stack	*get_min_node(t_stack *s)
 {
-	t_stack *min;
+	t_stack	*min;
 
 	min = NULL;
 	if (s != NULL)
@@ -31,9 +31,9 @@ t_stack *get_min_node(t_stack *s)
 	return (min);
 }
 
-t_stack *get_max_node(t_stack *s)
+t_stack	*get_max_node(t_stack *s)
 {
-	t_stack *max;
+	t_stack	*max;
 
 	max = NULL;
 	if (s != NULL)
@@ -50,10 +50,10 @@ t_stack *get_max_node(t_stack *s)
 	return (max);
 }
 
-t_stack *get_smaller_target_node(int nbr, t_stack *s)
+t_stack	*get_smaller_target_node(int nbr, t_stack *s)
 {
-	t_stack *target;
-	t_stack *aux;
+	t_stack	*target;
+	t_stack	*aux;
 	int		shortest_dist;
 	int		dist;
 
@@ -81,10 +81,10 @@ t_stack *get_smaller_target_node(int nbr, t_stack *s)
 	return (target);
 }
 
-t_stack *get_bigger_target_node(int nbr, t_stack *s)
+t_stack	*get_bigger_target_node(int nbr, t_stack *s)
 {
-	t_stack *target;
-	t_stack *aux;
+	t_stack	*target;
+	t_stack	*aux;
 	int		shortest_dist;
 	int		dist;
 
@@ -111,4 +111,5 @@ t_stack *get_bigger_target_node(int nbr, t_stack *s)
 	}
 	return (target);
 }
-// t_stack get_last_node(t_stack *s)
+
+//t_stack get_last_node(t_stack *s)
