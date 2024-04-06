@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 21:10:31 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/28 21:41:38 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/06 16:45:29 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	print_stacks(t_stack *a, t_stack *b)
 		if (a != NULL)
 		{
 			ft_printf("%d\t", a->nbr);
+			ft_printf("%d\t", a->index);
 			a = a->next;
 		}
 		else
@@ -26,6 +27,7 @@ void	print_stacks(t_stack *a, t_stack *b)
 		if (b != NULL)
 		{
 			ft_printf("%d\n", b->nbr);
+			ft_printf("%d\t", b->index);
 			b = b->next;
 		}
 		else

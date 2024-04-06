@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:28:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/06 16:07:09 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/06 18:16:57 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ typedef struct s_stack
 {
 	int				nbr;
 	int				cost;
+	int 			index;
 	char			*mov;
 	struct s_stack	*target;
 	struct s_stack	*next;
 }	t_stack;
 
 t_stack	*stack_last(t_stack *lst);
-t_stack	*stack_new(int number);
+t_stack	*stack_new(int number, int index);
 void	sa(t_stack **a);
 void	ra(t_stack **a);
 void	rra(t_stack **a);
@@ -60,5 +61,8 @@ int		stack_len(t_stack *s);
 void	sort(t_stack **a, t_stack **b);
 void	sort_two(t_stack **s);
 void	sort_n(t_stack **a, t_stack **b);
+void	save_index_node(t_stack **s);
+void	set_targets_node(t_stack **from, t_stack *to);
+void	push_cheapest_node(t_stack **from, t_stack **to);
 
 #endif

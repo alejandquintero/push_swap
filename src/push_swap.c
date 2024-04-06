@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 16:05:38 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/06 15:50:12 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/06 17:19:24 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ int	main(int argc, char *argv[])
 	b = NULL;
 	while (argv[i])
 	{
-		stack_add_back(&a, stack_new(ft_atoi(argv[i])));
+		stack_add_back(&a, stack_new(ft_atoi(argv[i]), i - 1));
 		i++;
 	}
+	print_stacks(a, b);
+
 	if (!is_sorted(a))
 		sort(&a, &b);
 	else
@@ -35,14 +37,7 @@ int	main(int argc, char *argv[])
 
 	print_stacks(a, b);
 
-	// t_stack *aux = a;
-	// while (aux)
-	// {
-	// 	// t_stack *target = get_smaller_target_node(aux->nbr, b);
-	// 	// ft_printf("Small Target node %d -> ", aux->nbr);
-	// 	ft_printf("%d\n", aux->index);
-	// 	aux = aux->next;
-	// }
+
 
 	// t_stack *aux = b;
 	// while (aux)
