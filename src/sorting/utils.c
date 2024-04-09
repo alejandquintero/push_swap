@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 22:19:58 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/06 18:43:26 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/10 00:22:18 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,57 +141,42 @@ t_stack	*find_by_nbr(t_stack *s, int nbr)
 	return (node);
 }
 
-void	set_total_moves(t_stack **from, int from_nbr, t_stack **to, int to_nbr)
+int	set_total_moves(t_stack *aux, int stack_to_len, int stack_from_len)
 {
-	t_stack *node;
-	t_stack *aux_from = *from;
-	t_stack *aux_to = *to;
-	int		len;
-	int		moves;
+	int moves;
 
 	moves = 0;
- 	node = find_by_nbr(aux_from, from_nbr);
-	len = stack_len(aux_from);
-	while (node->index != 0)	
+	if (aux->index > 0)
 	{
-		if (node->index < len / 2)
-			rotate(&aux_from);
+		if (aux->index <= stack_from_len / 2)
+			moves = aux->index;
 		else
-			reverse(&aux_from);
-		save_index_node(&aux_from);		
-		moves++;
-	 	node = find_by_nbr(aux_from, from_nbr);
+			moves = stack_from_len - aux->index;
 	}
-	(*from)->cost = moves;
-
-	
-	moves = 0;
-	node = find_by_nbr(aux_to, to_nbr);
-	len = stack_len(aux_to);
-	while (node->index != 0)	
+	if (aux->target->index > 0)
 	{
-		if (node->index < len / 2)
-			rotate(&aux_to);
+		if (aux->target->index <= stack_to_len / 2)
+			moves += aux->target->index;
 		else
-			reverse(&aux_to);
-		save_index_node(&aux_to);
-		moves++;
-	 	node = find_by_nbr(aux_to, to_nbr);
+			moves += stack_to_len - aux->target->index;
 	}
-	(*to)->cost = moves;
+	return (moves);
 }
 
 void	push_cheapest_node(t_stack **from, t_stack **to)
 {
-	// t_stack *aux;
-
-	// aux = *from;
-
-	while (*from != NULL)
+	t_stack *aux;
+	aux = *from;
+	int stack_to_len = stack_len(*to);
+	int stack_from_len = stack_len(*from);
+	int moves;
+	while (aux != NULL)
 	{
-		set_total_moves(from, (*from)->nbr, to, (*from)->target->nbr);
-		ft_printf("moves to top: %d (%d) target:  %d (%d) \n", (*from)->nbr, (*from)->cost, (*from)->target->nbr, (*from)->target->cost );
-		*from = (*from)->next;
+		moves = set_total_moves(aux, stack_to_len, stack_from_len);
+		ft_printf("moves to top: %d", aux->nbr);
+		ft_printf(" target %d : ", aux->target->nbr);
+		ft_printf("%d\n", moves);
+		aux = aux->next;
 	}
 }
 

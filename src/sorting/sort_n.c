@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 15:44:23 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/06 18:22:05 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/10 00:22:50 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	sort_n(t_stack **a, t_stack **b)
 	pb(a, b);
 	if (len != 4)
 		pb(a, b);
+	pb(a, b);
 	while (stack_len(*a) != 3)
 	{	
 		set_targets_node(a, *b);
