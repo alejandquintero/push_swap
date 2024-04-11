@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 15:32:55 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/06 16:07:54 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/11 21:22:16 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	sort(t_stack **a, t_stack **b)
 {
-	if (stack_len(*a) == 2)
+	if (len(*a) == 2)
 		sort_two(a);
-	else if (stack_len(*a) == 3)
+	else if (len(*a) == 3)
 		sort_three(a);
 	else
 		sort_n(a, b);

@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 17:53:53 by aquinter          #+#    #+#              #
-#    Updated: 2024/04/06 15:43:41 by aquinter         ###   ########.fr        #
+#    Updated: 2024/04/11 21:22:16 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ SRC = $(addprefix $(SRC_DIR), \
 	sorting/sort_three.c \
 	sorting/sort_two.c \
 	sorting/sort_n.c \
-	utils/stack_len.c)
+	utils/len.c)
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:$(SRC_DIR)%.c=%.o))
 

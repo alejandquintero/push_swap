@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 21:50:35 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/06 16:50:41 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/11 21:50:15 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ t_stack	*stack_new(int number, int index)
 		return (NULL);
 	(*new_node).nbr = number;
 	(*new_node).index = index;
-	(*new_node).cost = 0;
-	(*new_node).mov = NULL;
 	(*new_node).target = NULL;
 	(*new_node).next = NULL;
 	return (new_node);

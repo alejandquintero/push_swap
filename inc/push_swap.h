@@ -6,23 +6,26 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:28:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/06 18:16:57 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/12 00:14:25 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+
+# define ABOVE 0
+# define BELOW 1
+
 # include <stdbool.h>
+# include <limits.h>
 # include "../libft/inc/ft_printf.h"
 # include "../libft/inc/libft.h"
 
 typedef struct s_stack
 {
 	int				nbr;
-	int				cost;
 	int 			index;
-	char			*mov;
 	struct s_stack	*target;
 	struct s_stack	*next;
 }	t_stack;
@@ -57,12 +60,16 @@ t_stack	*get_min_node(t_stack *s);
 t_stack	*get_max_node(t_stack *s);
 t_stack	*get_smaller_target_node(int nbr, t_stack *s);
 t_stack	*get_bigger_target_node(int nbr, t_stack *s);
-int		stack_len(t_stack *s);
+t_stack	*find_cheapest_node(t_stack *s_source, t_stack *s_target);
+int		len(t_stack *s);
 void	sort(t_stack **a, t_stack **b);
 void	sort_two(t_stack **s);
 void	sort_n(t_stack **a, t_stack **b);
 void	save_index_node(t_stack **s);
-void	set_targets_node(t_stack **from, t_stack *to);
-void	push_cheapest_node(t_stack **from, t_stack **to);
+void	set_targets_node(t_stack **s_source, t_stack *s_target, bool smaller);
+t_stack	*find_by_nbr(t_stack *s, int nbr);
+void	push_cheapest_node(t_stack **s_source, t_stack **s_target, int nbr);
+void	push_cheapest_node_desc(t_stack **s_source, t_stack **s_target, int nbr);
+int		get_median(t_stack *node, int stack_length);
 
 #endif

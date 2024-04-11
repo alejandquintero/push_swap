@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 22:19:58 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/10 00:22:18 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/11 23:50:31 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,14 +112,17 @@ t_stack	*get_bigger_target_node(int nbr, t_stack *s)
 	return (target);
 }
 
-void	set_targets_node(t_stack **from, t_stack *to)
+void	set_targets_node(t_stack **s_source, t_stack *s_target, bool smaller)
 {
 	t_stack *aux;
 	
-	aux = *from;
+	aux = *s_source;
 	while (aux)
 	{
-		aux->target = get_smaller_target_node(aux->nbr, to);
+		if (smaller)
+			aux->target = get_smaller_target_node(aux->nbr, s_target);
+		else
+			aux->target = get_bigger_target_node(aux->nbr, s_target);
 		aux = aux->next;
 	}
 }
@@ -141,44 +144,169 @@ t_stack	*find_by_nbr(t_stack *s, int nbr)
 	return (node);
 }
 
-int	set_total_moves(t_stack *aux, int stack_to_len, int stack_from_len)
+int	get_median(t_stack *node, int stack_length)
+{
+	if (node->index <= stack_length / 2)
+		return (ABOVE);
+	return (BELOW);
+}
+
+int	get_total_moves(t_stack *node, int s_length, int t_length)
 {
 	int moves;
+	int s_position;
+	int t_position;
 
 	moves = 0;
-	if (aux->index > 0)
+	s_position = -1;
+	t_position = -1;
+	if (node->index > 0)
 	{
-		if (aux->index <= stack_from_len / 2)
-			moves = aux->index;
+		s_position = get_median(node, s_length);
+		if (s_position == ABOVE)
+			moves = node->index;
 		else
-			moves = stack_from_len - aux->index;
+			moves = s_length - node->index;
 	}
-	if (aux->target->index > 0)
+	if (node->target->index > 0)
 	{
-		if (aux->target->index <= stack_to_len / 2)
-			moves += aux->target->index;
+		t_position = get_median(node->target, t_length);
+		if (t_position == ABOVE)
+			moves += node->target->index;
 		else
-			moves += stack_to_len - aux->target->index;
+			moves += t_length - node->target->index;
+	}
+	if (s_position == t_position)
+	{
+		if (moves % 2 != 0)
+			moves = (moves + 1) / 2;
+		else
+			moves = moves / 2;			
 	}
 	return (moves);
 }
 
-void	push_cheapest_node(t_stack **from, t_stack **to)
+t_stack	*find_cheapest_node(t_stack *s_source, t_stack *s_target)
 {
 	t_stack *aux;
-	aux = *from;
-	int stack_to_len = stack_len(*to);
-	int stack_from_len = stack_len(*from);
+	t_stack *cheapest_node;
+	int s_length;
+	int t_length;
 	int moves;
+	long min_moves;
+	
+	s_length = len(s_source);
+	t_length = len(s_target);
+	aux = s_source;
+	min_moves = LONG_MAX;
 	while (aux != NULL)
 	{
-		moves = set_total_moves(aux, stack_to_len, stack_from_len);
-		ft_printf("moves to top: %d", aux->nbr);
-		ft_printf(" target %d : ", aux->target->nbr);
-		ft_printf("%d\n", moves);
+		moves = get_total_moves(aux, s_length, t_length);
+		if (moves == 0)
+			return (aux);
+		else if (moves < min_moves)
+		{
+			min_moves = moves,
+			cheapest_node = aux;
+		}
+		// ft_printf("moves to top: %d", aux->nbr);
+		// ft_printf(" target %d : ", aux->target->nbr);
+		// ft_printf("%d\n", moves);
 		aux = aux->next;
 	}
+	return (cheapest_node);
 }
+
+void	push_cheapest_node(t_stack **s_source, t_stack **s_target, int nbr)
+{
+	t_stack *node = find_by_nbr(*s_source, nbr);
+	t_stack *target_node = find_by_nbr(*s_target, node->target->nbr);
+	
+	int node_position;
+	int target_position;
+
+	node_position = -1;
+	target_position = -1;
+	while (node->index != 0 || node->target->index != 0)
+	{
+		node_position = get_median(node, len(*s_source));
+		target_position = get_median(node->target, len(*s_target));
+
+		if (node_position == target_position && node->index != 0 && target_node->index != 0)
+		{
+			if (node_position == ABOVE)
+				rr(s_source, s_target);
+			else
+				rrr(s_source, s_target);
+		}
+		else
+		{
+			if (node->index > 0)
+			{
+				if (node_position == ABOVE)
+					ra(s_source);
+				else
+					rra(s_source);
+			}
+			if (node->target->index > 0)
+			{
+				if (target_position == ABOVE)
+					rb(s_target);
+				else
+					rrb(s_target);
+			}
+		}
+		node = find_by_nbr(*s_source, nbr);
+		target_node = find_by_nbr(*s_target, node->target->nbr);
+	}
+	pb(s_source, s_target);
+}
+
+void	push_cheapest_node_desc(t_stack **s_source, t_stack **s_target, int nbr)
+{
+	t_stack *node = find_by_nbr(*s_source, nbr);
+	t_stack *target_node = find_by_nbr(*s_target, node->target->nbr);
+	
+	int node_position;
+	int target_position;
+
+	node_position = -1;
+	target_position = -1;
+	while (node->index != 0 || node->target->index != 0)
+	{
+		node_position = get_median(node, len(*s_source));
+		target_position = get_median(node->target, len(*s_target));
+
+		if (node_position == target_position && node->index != 0 && target_node->index != 0)
+		{
+			if (node_position == ABOVE)
+				rr(s_source, s_target);
+			else
+				rrr(s_source, s_target);
+		}
+		else
+		{
+			if (node->index > 0)
+			{
+				if (node_position == ABOVE)
+					rb(s_source);
+				else
+					rrb(s_source);
+			}
+			if (node->target->index > 0)
+			{
+				if (target_position == ABOVE)
+					ra(s_target);
+				else
+					rra(s_target);
+			}
+		}
+		node = find_by_nbr(*s_source, nbr);
+		target_node = find_by_nbr(*s_target, node->target->nbr);
+	}
+	pa(s_source, s_target);
+}
+
 
 void	save_index_node(t_stack **s)
 {

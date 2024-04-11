@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 15:44:23 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/10 00:22:50 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/12 00:15:28 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,41 @@
 
 void	sort_n(t_stack **a, t_stack **b)
 {
-	int len;
-	// t_stack *min_node;
+	int stack_length;
+	t_stack *cheapest_node;
+	t_stack *min_node;
+	int node_position;
 
-	len = stack_len(*a);
+	stack_length = len(*a);
 	pb(a, b);
-	if (len != 4)
+	if (stack_length != 4)
 		pb(a, b);
-	pb(a, b);
-	while (stack_len(*a) != 3)
+	while (len(*a) != 3)
 	{	
-		set_targets_node(a, *b);
-		push_cheapest_node(a, b);
-		// calculate target smaller nodes and pb
-		break;
+		set_targets_node(a, *b, true);
+		cheapest_node = find_cheapest_node(*a, *b);
+		// ft_printf("cheapest node: %d -> %d\n", cheapest_node->nbr, cheapest_node->target->nbr);
+		push_cheapest_node(a, b, cheapest_node->nbr);
+		// break;
 	}
-
-	// t_stack *aux = *a;
-	// while (aux)
-	// {
-	// 	ft_printf("Small Target node %d (%d) -> %d (%d) \n", (aux)->nbr, aux->index, (aux)->target->nbr, aux->target->index );
-	// 	aux = aux->next;
-	// }
-	
-
-	// sort_three(a);
-	// while (b)
-	// {
-	//  	break;
-	// 	// calculate target bigger nodes and pa
-	// }
- 	// min_node = get_min_node(*a);
-	// len = stack_len(*a);
-	// while (min_node->index != 0)	
-	// {
-	// 	if (min_node->index < len / 2)
-	// 		ra(a);
-	// 	else
-	// 		rra(a);
-	//  	min_node = get_min_node(*a);
-	// }
+	if (!is_sorted(*a))
+		sort_three(a);
+	while (*b != NULL)
+	{
+		set_targets_node(b, *a, false);
+		cheapest_node = find_cheapest_node(*b, *a);
+		// ft_printf("cheapest node: %d -> %d\n", cheapest_node->nbr, cheapest_node->target->nbr);
+		push_cheapest_node_desc(b, a, cheapest_node->nbr);
+	}
+ 	min_node = get_min_node(*a);
+	node_position = -1;
+	while (min_node->index != 0)	
+	{
+		node_position = get_median(min_node, len(*a));
+		if (node_position == ABOVE)
+			ra(a);
+		else
+			rra(a);
+	 	min_node = get_min_node(*a);
+	}
 }
