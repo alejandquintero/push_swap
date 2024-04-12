@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:49:56 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/06 16:43:11 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/12 23:24:37 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,18 @@ void	sa(t_stack **a)
 	save_index_node(a);
 }
 
-void	ra(t_stack **a)
+void	ra(t_stack **a, bool print)
 {
-	ft_printf("ra\n");
+	if (print)
+		ft_printf("ra\n");
 	rotate(a);
 	save_index_node(a);
 }
 
-void	rra(t_stack **a)
+void	rra(t_stack **a, bool print)
 {
-	ft_printf("rra\n");
+	if (print)
+		ft_printf("rra\n");
 	reverse(a);
 	save_index_node(a);
 }

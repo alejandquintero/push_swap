@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:28:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/12 00:14:25 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/12 23:25:45 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ typedef struct s_stack
 t_stack	*stack_last(t_stack *lst);
 t_stack	*stack_new(int number, int index);
 void	sa(t_stack **a);
-void	ra(t_stack **a);
-void	rra(t_stack **a);
+void	ra(t_stack **a, bool print);
+void	rra(t_stack **a, bool print);
 void	pa(t_stack **b, t_stack **a);
 void	sb(t_stack **b);
-void	rb(t_stack **b);
-void	rrb(t_stack **b);
+void	rb(t_stack **b, bool print);
+void	rrb(t_stack **b, bool print);
 void	pb(t_stack **a, t_stack **b);
 void	ss(t_stack **a, t_stack **b);
 void	rr(t_stack **a, t_stack **b);
@@ -68,8 +68,8 @@ void	sort_n(t_stack **a, t_stack **b);
 void	save_index_node(t_stack **s);
 void	set_targets_node(t_stack **s_source, t_stack *s_target, bool smaller);
 t_stack	*find_by_nbr(t_stack *s, int nbr);
-void	push_cheapest_node(t_stack **s_source, t_stack **s_target, int nbr);
-void	push_cheapest_node_desc(t_stack **s_source, t_stack **s_target, int nbr);
+void	push_cheapest_node_to_b(t_stack **a, t_stack **b, int nbr);
+void	push_b_to_a(t_stack **b, t_stack **a);
 int		get_median(t_stack *node, int stack_length);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 21:59:31 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/06 16:01:51 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/12 23:27:11 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	sort_three(t_stack **s)
 	c = (*s)->next->next->nbr;
 	if (a < b)
 	{
-		rra(s);
+		rra(s, true);
 		if (a < c)
 			sa(s);
 	}
@@ -31,7 +31,7 @@ void	sort_three(t_stack **s)
 	{
 		if (a > c)
 		{
-			ra(s);
+			ra(s, true);
 			if (b > c)
 				sa(s);
 		}
