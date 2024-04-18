@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:28:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/12 23:25:45 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/18 21:59:48 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_stack
 {
 	int				nbr;
 	int 			index;
+	int				median;
 	struct s_stack	*target;
 	struct s_stack	*next;
 }	t_stack;
@@ -54,22 +55,20 @@ void	reverse(t_stack **s);
 void	push(t_stack **from, t_stack **to);
 void	sort_three(t_stack **s);
 void	print_sorted_stack(t_stack *a);
-void	exec(t_stack **s, char *movement, char stack);
 bool	is_sorted(t_stack *s);
 t_stack	*get_min_node(t_stack *s);
 t_stack	*get_max_node(t_stack *s);
-t_stack	*get_smaller_target_node(int nbr, t_stack *s);
-t_stack	*get_bigger_target_node(int nbr, t_stack *s);
-t_stack	*find_cheapest_node(t_stack *s_source, t_stack *s_target);
-int		len(t_stack *s);
+t_stack *get_cheapest_node(t_stack *a, t_stack *b);
+int		stack_length(t_stack *s);
 void	sort(t_stack **a, t_stack **b);
 void	sort_two(t_stack **s);
 void	sort_n(t_stack **a, t_stack **b);
 void	save_index_node(t_stack **s);
-void	set_targets_node(t_stack **s_source, t_stack *s_target, bool smaller);
 t_stack	*find_by_nbr(t_stack *s, int nbr);
 void	push_cheapest_node_to_b(t_stack **a, t_stack **b, int nbr);
 void	push_b_to_a(t_stack **b, t_stack **a);
-int		get_median(t_stack *node, int stack_length);
+void 	set_median(t_stack *stack);
+void	set_targets_node_a(t_stack *a, t_stack *b);
+void	set_targets_node_b(t_stack *b, t_stack *a);
 
 #endif

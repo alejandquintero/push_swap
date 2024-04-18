@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 17:53:53 by aquinter          #+#    #+#              #
-#    Updated: 2024/04/11 21:22:16 by aquinter         ###   ########.fr        #
+#    Updated: 2024/04/13 17:18:11 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ SRC = $(addprefix $(SRC_DIR), \
 	stacks/b.c \
 	stacks/manipulations.c \
 	stacks/frees.c \
-	movements/executions.c \
 	movements/simultaneous.c \
 	movements/operations.c \
 	sorting/is_sorted.c \
@@ -41,7 +40,7 @@ SRC = $(addprefix $(SRC_DIR), \
 	sorting/sort_three.c \
 	sorting/sort_two.c \
 	sorting/sort_n.c \
-	utils/len.c)
+	utils/stack_length.c)
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:$(SRC_DIR)%.c=%.o))
 

@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 22:19:58 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/12 23:29:06 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/18 22:08:06 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,87 +50,68 @@ t_stack	*get_max_node(t_stack *s)
 	return (max);
 }
 
-t_stack	*get_smaller_target_node(int nbr, t_stack *s)
+void	set_targets_node_a(t_stack *a, t_stack *b)
 {
-	t_stack	*target;
-	t_stack	*aux;
-	long	shortest_dist;
 	int		dist;
+	long	shortest_dist;
+	t_stack	*current_b;
 
-	target = NULL;
-	shortest_dist = LONG_MAX;
-	aux = s;
-	if (aux != NULL)
+	while (a)
 	{
-		while (aux != NULL)
+		current_b = b;
+		shortest_dist = LONG_MAX;
+		while (current_b != NULL)
 		{
-			if (nbr > aux->nbr)
+			if (a->nbr > current_b->nbr)
 			{
-				dist = nbr - aux->nbr;
+				dist = a->nbr - current_b->nbr;
 				if (dist < shortest_dist)
 				{
 					shortest_dist = dist;
-					target = aux;
+					a->target = current_b;
 				}
 			}
-			aux = aux->next;
+			current_b = current_b->next;
 		}
 		if (shortest_dist == LONG_MAX)
-			target = get_max_node(s);
+			a->target = get_max_node(b);
+		a = a->next;
 	}
-	return (target);
 }
 
-t_stack	*get_bigger_target_node(int nbr, t_stack *s)
+void	set_targets_node_b(t_stack *b, t_stack *a)
 {
-	t_stack	*target;
-	t_stack	*aux;
-	long	shortest_dist;
 	int		dist;
+	long	shortest_dist;
+	t_stack	*current_a;
 
-	target = NULL;
-	shortest_dist = LONG_MAX;
-	aux = s;
-	if (aux != NULL)
+	while (b)
 	{
-		while (aux != NULL)
+		current_a = a;
+		shortest_dist = LONG_MAX;
+		while (current_a != NULL)
 		{
-			if (nbr < aux->nbr)
+			if (b->nbr < current_a->nbr)
 			{
-				dist = aux->nbr - nbr;
+				dist = current_a->nbr - b->nbr;
 				if (dist < shortest_dist)
 				{
 					shortest_dist = dist;
-					target = aux;
+					b->target = current_a;
 				}
 			}
-			aux = aux->next;
+			current_a = current_a->next;
 		}
 		if (shortest_dist == LONG_MAX)
-			target = get_min_node(s);
-	}
-	return (target);
-}
-
-void	set_targets_node(t_stack **s_source, t_stack *s_target, bool smaller)
-{
-	t_stack *aux;
-	
-	aux = *s_source;
-	while (aux)
-	{
-		if (smaller)
-			aux->target = get_smaller_target_node(aux->nbr, s_target);
-		else
-			aux->target = get_bigger_target_node(aux->nbr, s_target);
-		aux = aux->next;
+			b->target = get_min_node(a);
+		b = b->next;
 	}
 }
 
 t_stack	*find_by_nbr(t_stack *s, int nbr)
 {
-	t_stack *node;
-	
+	t_stack	*node;
+
 	node = NULL;
 	if (s != NULL)
 	{
@@ -138,77 +119,77 @@ t_stack	*find_by_nbr(t_stack *s, int nbr)
 		{
 			if (s->nbr == nbr)
 				node = s;
-			s = s->next; 
+			s = s->next;
 		}
 	}
 	return (node);
 }
 
-int	get_median(t_stack *node, int stack_length)
+void	set_median(t_stack *stack)
 {
-	if (node->index <= stack_length / 2)
-		return (ABOVE);
-	return (BELOW);
+	int	len;
+
+	if (stack)
+	{
+		len = stack_length(stack);
+		while (stack != NULL)
+		{
+			if (stack->index <= (len / 2))
+				stack->median = ABOVE;
+			else
+				stack->median = BELOW;
+			stack = stack->next;
+		}
+	}
 }
 
 int	get_total_moves(t_stack *node, int source_length, int target_length)
 {
-	int moves;
-	int node_position;
-	int target_position;
+	int	moves;
 
-	moves = 0;
-	node_position = get_median(node, source_length);
-	target_position = get_median(node->target, target_length);
-	
 	moves = node->index;
-	if (node_position == BELOW)
+	if (node->median == BELOW)
 		moves = source_length - node->index;
-	if (target_position == BELOW)
+	if (node->target->median == BELOW)
 		moves += target_length - node->target->index;
 	else
 		moves += node->target->index;
 	return (moves);
 }
 
-t_stack	*find_cheapest_node(t_stack *s_source, t_stack *s_target)
+t_stack	*get_cheapest_node(t_stack *a, t_stack *b)
 {
-	t_stack *aux;
-	t_stack *cheapest_node;
-	int s_length;
-	int t_length;
-	int moves;
-	long min_moves;
-	
-	s_length = len(s_source);
-	t_length = len(s_target);
-	aux = s_source;
+	int		len_stack_a;
+	int		len_stack_b;
+	int		moves;
+	long	min_moves;
+	t_stack	*cheapest;
+
+	len_stack_a = stack_length(a);
+	len_stack_b = stack_length(b);
 	min_moves = LONG_MAX;
-	while (aux != NULL)
+	while (a != NULL || moves == 0)
 	{
-		moves = get_total_moves(aux, s_length, t_length);
+		moves = get_total_moves(a, len_stack_a, len_stack_b);
 		if (moves == 0)
-			return (aux);
+			return (a);
 		else if (moves < min_moves)
 		{
-			min_moves = moves,
-			cheapest_node = aux;
+			min_moves = moves;
+			cheapest = a;
 		}
-		aux = aux->next;
+		a = a->next;
 	}
-	return (cheapest_node);
+	return (cheapest);
 }
 
-void move_to_top(t_stack **s, t_stack *node, char stack)
+void	move_to_top(t_stack **s, t_stack *node, char stack)
 {
-	int	node_position;
-
-	node_position = get_median(node, len(*s));
 	while (*s != node)
 	{
 		if (node->index > 0)
 		{
-			if (node_position == ABOVE)
+			if (node->median == ABOVE)
 			{
 				if (stack == 'a')
 					ra(s, true);
@@ -220,7 +201,7 @@ void move_to_top(t_stack **s, t_stack *node, char stack)
 				if (stack == 'a')
 					rra(s, true);
 				else
-					rrb(s, true);		
+					rrb(s, true);
 			}
 		}
 	}
@@ -228,17 +209,14 @@ void move_to_top(t_stack **s, t_stack *node, char stack)
 
 void	push_cheapest_node_to_b(t_stack **a, t_stack **b, int nbr)
 {
-	t_stack *cheapest_node = find_by_nbr(*a, nbr);
-	int node_position;
-	int target_position;
+	t_stack	*cheapest_node;
 
-	node_position = get_median(cheapest_node, len(*a));
-	target_position = get_median(cheapest_node->target, len(*b));
-	if (node_position ==  target_position)
+	cheapest_node = find_by_nbr(*a, nbr);
+	if (cheapest_node->median == cheapest_node->target->median)
 	{
 		while (*a != cheapest_node && *b != cheapest_node->target)
 		{
-			if (node_position == ABOVE)
+			if (cheapest_node->median == ABOVE)
 				rr(a, b);
 			else
 				rrr(a, b);
@@ -251,16 +229,14 @@ void	push_cheapest_node_to_b(t_stack **a, t_stack **b, int nbr)
 
 void	push_b_to_a(t_stack **b, t_stack **a)
 {
-	t_stack *node;
-	int		target_position;
-	
+	t_stack	*node;
+
 	node = *b;
-	target_position = get_median(node->target, len(*a));
 	while (*a != node->target)
 	{
 		if (node->target->index > 0)
 		{
-			if (target_position == ABOVE)
+			if (node->target->median == ABOVE)
 				ra(a, true);
 			else
 				rra(a, true);
@@ -269,11 +245,10 @@ void	push_b_to_a(t_stack **b, t_stack **a)
 	pa(b, a);
 }
 
-
 void	save_index_node(t_stack **s)
 {
-	int	i;
-	t_stack *aux;
+	int		i;
+	t_stack	*aux;
 
 	i = 0;
 	aux = *s;
@@ -281,6 +256,6 @@ void	save_index_node(t_stack **s)
 	{
 		aux->index = i;
 		i++;
-        aux = aux->next;
+		aux = aux->next;
 	}
 }

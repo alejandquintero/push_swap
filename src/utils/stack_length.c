@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executions.c                                       :+:      :+:    :+:   */
+/*   len.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 17:24:43 by aquinter          #+#    #+#             */
-/*   Updated: 2024/03/25 22:30:49 by aquinter         ###   ########.fr       */
+/*   Created: 2024/04/06 15:34:49 by aquinter          #+#    #+#             */
+/*   Updated: 2024/04/11 21:20:27 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void	exec(t_stack **s, char *movement, char stack)
+int	stack_length(t_stack *s)
 {
-	if (ft_strncmp(movement, "swap", 4) == 0)
+	int	c;
+
+	c = 0;
+	if (s != NULL)
 	{
-		ft_printf("s%c\n", stack);
-		swap(s);
+		while (s != NULL)
+		{
+			c++;
+			s = s->next;
+		}
 	}
-	else if (ft_strncmp(movement, "rotate", 6) == 0)
-	{
-		ft_printf("r%c\n", stack);
-		rotate(s);
-	}
-	else if (ft_strncmp(movement, "reverse", 7) == 0)
-	{
-		ft_printf("rr%c\n", stack);
-		reverse(s);
-	}
+	return (c);
 }
