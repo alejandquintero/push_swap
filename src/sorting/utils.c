@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 22:19:58 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/18 22:08:06 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/18 22:25:34 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,34 +143,22 @@ void	set_median(t_stack *stack)
 	}
 }
 
-int	get_total_moves(t_stack *node, int source_length, int target_length)
+t_stack	*get_cheapest_node(t_stack *a, int len_a, int len_b)
 {
-	int	moves;
-
-	moves = node->index;
-	if (node->median == BELOW)
-		moves = source_length - node->index;
-	if (node->target->median == BELOW)
-		moves += target_length - node->target->index;
-	else
-		moves += node->target->index;
-	return (moves);
-}
-
-t_stack	*get_cheapest_node(t_stack *a, t_stack *b)
-{
-	int		len_stack_a;
-	int		len_stack_b;
 	int		moves;
 	long	min_moves;
 	t_stack	*cheapest;
 
-	len_stack_a = stack_length(a);
-	len_stack_b = stack_length(b);
 	min_moves = LONG_MAX;
-	while (a != NULL || moves == 0)
+	while (a != NULL)
 	{
-		moves = get_total_moves(a, len_stack_a, len_stack_b);
+		moves = a->index;
+		if (a->median == BELOW)
+			moves = len_a - a->index;
+		if (a->target->median == BELOW)
+			moves += len_b - a->target->index;
+		else
+			moves += a->target->index;
 		if (moves == 0)
 			return (a);
 		else if (moves < min_moves)

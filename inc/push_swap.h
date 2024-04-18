@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:28:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/18 21:59:48 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/18 22:22:16 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	print_sorted_stack(t_stack *a);
 bool	is_sorted(t_stack *s);
 t_stack	*get_min_node(t_stack *s);
 t_stack	*get_max_node(t_stack *s);
-t_stack *get_cheapest_node(t_stack *a, t_stack *b);
+t_stack	*get_cheapest_node(t_stack *a, int len_a, int len_b);
 int		stack_length(t_stack *s);
 void	sort(t_stack **a, t_stack **b);
 void	sort_two(t_stack **s);
