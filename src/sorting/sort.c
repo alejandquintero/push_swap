@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_three.c                                       :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 21:59:31 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/12 23:27:11 by aquinter         ###   ########.fr       */
+/*   Created: 2024/04/06 15:32:55 by aquinter          #+#    #+#             */
+/*   Updated: 2024/04/20 14:48:18 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
+
+bool	is_sorted(t_stack *s)
+{
+	if (s != NULL)
+	{
+		while (s->next != NULL)
+		{
+			if (s->nbr > s->next->nbr)
+				return (false);
+			s = s->next;
+		}
+	}
+	return (true);
+}
 
 void	sort_three(t_stack **s)
 {
@@ -38,4 +52,19 @@ void	sort_three(t_stack **s)
 		else
 			sa(s);
 	}
+}
+
+void	sort_two(t_stack **s)
+{
+	sa(s);
+}
+
+void	sort(t_stack **a, t_stack **b)
+{
+	if (stack_length(*a) == 2)
+		sort_two(a);
+	else if (stack_length(*a) == 3)
+		sort_three(a);
+	else
+		sort_n(a, b);
 }

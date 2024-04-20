@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 17:53:53 by aquinter          #+#    #+#              #
-#    Updated: 2024/04/13 17:18:11 by aquinter         ###   ########.fr        #
+#    Updated: 2024/04/20 14:48:42 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,19 +27,16 @@ RM = rm -rf
 
 SRC = $(addprefix $(SRC_DIR), \
 	push_swap.c \
-	utils/print_stacks.c \
-	stacks/a.c \
-	stacks/b.c \
-	stacks/manipulations.c \
-	stacks/frees.c \
-	movements/simultaneous.c \
-	movements/operations.c \
-	sorting/is_sorted.c \
+	movements/a_stack_ops.c \
+	movements/b_stack_ops.c \
+	movements/simultaneous_stack_ops.c \
+	movements/stack_ops.c \
 	sorting/utils.c \
-	sorting/sort_factory.c \
-	sorting/sort_three.c \
-	sorting/sort_two.c \
+	sorting/sort.c \
 	sorting/sort_n.c \
+	utils/stack_manipulations.c \
+	utils/print_stacks.c \
+	utils/frees.c \
 	utils/stack_length.c)
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:$(SRC_DIR)%.c=%.o))

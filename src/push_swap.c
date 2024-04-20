@@ -6,12 +6,11 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 16:05:38 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/18 22:09:23 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/20 14:50:06 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-#include "stdio.h"
 
 int	main(int argc, char *argv[])
 {
