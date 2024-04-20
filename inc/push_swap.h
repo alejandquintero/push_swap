@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:28:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/20 17:20:28 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/20 17:35:05 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,8 @@ t_stack	*get_max_node(t_stack *s);
 t_stack	*get_cheapest_node(t_stack *a, int len_a, int len_b);
 int		stack_length(t_stack *s);
 void	sort(t_stack **a, t_stack **b);
-void	sort_two(t_stack **s);
 void	sort_n(t_stack **a, t_stack **b);
 void	save_index_node(t_stack **s);
-t_stack	*find_by_nbr(t_stack *s, int nbr);
 void	push_cheapest_node_to_b(t_stack **a, t_stack **b, int nbr);
 void	push_b_to_a(t_stack **b, t_stack **a);
 void	set_median(t_stack *stack);

@@ -6,13 +6,13 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 15:44:23 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/20 16:49:57 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/20 17:28:43 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void	push_node_to_b(t_stack **a, t_stack **b)
+void	push_to_b(t_stack **a, t_stack **b)
 {
 	t_stack	*cheapest_node;
 	int		len_a;
@@ -27,7 +27,7 @@ void	push_node_to_b(t_stack **a, t_stack **b)
 	push_cheapest_node_to_b(a, b, cheapest_node->nbr);
 }
 
-void	push_node_to_a(t_stack **a, t_stack **b)
+void	push_to_a(t_stack **a, t_stack **b)
 {
 	set_median(*a);
 	set_target_nodes_of_b(*b, *a);
@@ -59,10 +59,10 @@ void	sort_n(t_stack **a, t_stack **b)
 	if (len_a-- > 3 && !is_sorted(*a))
 		pb(a, b);
 	while (len_a-- > 3 && !is_sorted(*a))
-		push_node_to_b(a, b);
+		push_to_b(a, b);
 	if (!is_sorted(*a))
 		sort_three(a);
 	while (*b != NULL)
-		push_node_to_a(a, b);
+		push_to_a(a, b);
 	move_min_node_to_top(a);
 }
