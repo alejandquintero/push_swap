@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:28:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/20 17:35:05 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/20 17:53:21 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	sb(t_stack **b);
 void	rb(t_stack **b, bool print);
 void	rrb(t_stack **b, bool print);
 void	pb(t_stack **a, t_stack **b);
-void	ss(t_stack **a, t_stack **b);
 void	rr(t_stack **a, t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 void	stack_add_front(t_stack **lst, t_stack *new);
