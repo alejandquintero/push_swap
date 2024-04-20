@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 17:53:53 by aquinter          #+#    #+#              #
-#    Updated: 2024/04/20 14:48:42 by aquinter         ###   ########.fr        #
+#    Updated: 2024/04/20 17:19:50 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,9 @@ SRC = $(addprefix $(SRC_DIR), \
 	movements/stack_ops.c \
 	sorting/utils.c \
 	sorting/sort.c \
-	sorting/sort_n.c \
+	sorting/algorithm.c \
+	sorting/a_to_b.c \
+	sorting/b_to_a.c \
 	utils/stack_manipulations.c \
 	utils/print_stacks.c \
 	utils/frees.c \

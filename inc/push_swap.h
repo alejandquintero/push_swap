@@ -6,18 +6,18 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:28:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/18 22:22:16 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/20 17:20:28 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-
 # define ABOVE 0
 # define BELOW 1
 
 # include <stdbool.h>
+# include <stdio.h>
 # include <limits.h>
 # include "../libft/inc/ft_printf.h"
 # include "../libft/inc/libft.h"
@@ -25,7 +25,7 @@
 typedef struct s_stack
 {
 	int				nbr;
-	int 			index;
+	int				index;
 	int				median;
 	struct s_stack	*target;
 	struct s_stack	*next;
@@ -67,8 +67,9 @@ void	save_index_node(t_stack **s);
 t_stack	*find_by_nbr(t_stack *s, int nbr);
 void	push_cheapest_node_to_b(t_stack **a, t_stack **b, int nbr);
 void	push_b_to_a(t_stack **b, t_stack **a);
-void 	set_median(t_stack *stack);
-void	set_targets_node_a(t_stack *a, t_stack *b);
-void	set_targets_node_b(t_stack *b, t_stack *a);
+void	set_median(t_stack *stack);
+void	set_target_nodes_of_a(t_stack *a, t_stack *b);
+void	set_target_nodes_of_b(t_stack *b, t_stack *a);
+void	move_to_top(t_stack **s, t_stack *node, char stack);
 
 #endif
