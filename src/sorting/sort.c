@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 15:32:55 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/20 17:46:02 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/22 20:38:51 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,12 @@ void	sort_two(t_stack **s)
 
 void	sort(t_stack **a, t_stack **b)
 {
-	if (stack_length(*a) == 2)
+	int	len;
+
+	len = stack_length(*a);
+	if (len == 2)
 		sort_two(a);
-	else if (stack_length(*a) == 3)
+	else if (len == 3)
 		sort_three(a);
 	else
 		sort_n(a, b);

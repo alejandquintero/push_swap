@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:28:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/20 17:53:21 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/22 21:47:30 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ void	set_median(t_stack *stack);
 void	set_target_nodes_of_a(t_stack *a, t_stack *b);
 void	set_target_nodes_of_b(t_stack *b, t_stack *a);
 void	move_to_top(t_stack **s, t_stack *node, char stack);
+void	free_nbrs(char **str);
 
 #endif
