@@ -6,11 +6,21 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 21:53:47 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/22 21:54:28 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/25 23:02:54 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
+
+void	error(char **nbrs, t_stack *a)
+{
+	ft_putstr_fd("Error\n", STDERR_FILENO);
+	if (nbrs)
+		free_nbrs(nbrs);
+	if (a)
+		stack_clear(&a);
+	exit(EXIT_FAILURE);
+}
 
 void	free_nbrs(char **str)
 {

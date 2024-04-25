@@ -6,13 +6,18 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 16:05:38 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/25 22:16:56 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/25 23:14:54 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int	ft_stol(const char *str)
+void leaks(void)
+{
+	system("leaks -q push_swap");
+}
+
+long	ft_stol(const char *str)
 {
 	int		i;
 	int		sign;
@@ -23,16 +28,11 @@ int	ft_stol(const char *str)
 	sign = 1;	
 	if (str[i] == '-')
 		sign = -1;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == '-')
 		i++;
-	while (ft_isdigit(str[i]))
+	while (str[i])
 	{
 		num = (num * 10) + (str[i] - 48);
-		if (num < INT_MIN|| num > INT_MAX)
-		{
-			write(STDERR_FILENO, "Error\n", 6);
-			exit(EXIT_FAILURE);
-		}
 		i++;
 	}
 	return (num * sign);
@@ -71,20 +71,17 @@ int	main(int argc, char *argv[])
 	char	**nbrs;
 	t_stack	*a;
 	t_stack	*b;
-
+	long	nbr;
+	
+	// atexit(leaks);
 	i = 1;
 	a = NULL;
 	b = NULL;
+	nbrs = NULL;
 	if (argc < 2)
-	{
-		write(STDERR_FILENO, "Error\n", 6);
-		return (1);
-	}
+		error(nbrs, a);
 	if (ft_strlen(argv[i]) < 1)
-	{
-		write(STDERR_FILENO, "Error\n", 6);
-		return (1);
-	}
+		error(nbrs, a);
 	while (argv[i])
 	{
 		nbrs = ft_split(argv[i], ' ');
@@ -92,23 +89,13 @@ int	main(int argc, char *argv[])
 		while (nbrs[j] != NULL)
 		{	
 			if (!valid_syntax(nbrs[j]))
-			{
-				free_nbrs(nbrs);
-				stack_clear(&a);
-				stack_clear(&b);
-				write(STDERR_FILENO, "Error\n", 6);
-				return (1);
-			}
-			int	nbr = (int)ft_stol(nbrs[j]);
+				error(nbrs, a);
+			nbr = ft_stol(nbrs[j]);
+			if (nbr < INT_MIN || nbr > INT_MAX)
+				error(nbrs, a);
 			if (!is_nbr_unique_in_stack(a, nbr))
-			{
-				free_nbrs(nbrs);
-				stack_clear(&a);
-				stack_clear(&b);
-				write(STDERR_FILENO, "Error\n", 6);
-				return (1);
-			}
-			stack_add_back(&a, stack_new(nbr, i + j - 1));
+				error(nbrs, a);
+			stack_add_back(&a, stack_new((int)nbr, i + j - 1));
 			j++;
 		}
 		free_nbrs(nbrs);

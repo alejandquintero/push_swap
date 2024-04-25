@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 17:53:53 by aquinter          #+#    #+#              #
-#    Updated: 2024/04/20 17:19:50 by aquinter         ###   ########.fr        #
+#    Updated: 2024/04/25 23:07:08 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ INC_DIR = inc/
 OBJ_DIR = obj/
 
 CC = gcc
-CFLAGS = -Wextra -Werror -Wall #-g #-fsanitize=address
+CFLAGS = -Wextra -Werror -Wall #-fsanitize=address #-g 
 IFLAGS = -I$(INC_DIR) -I$(LIBFT_DIR)
 
 RM = rm -rf
