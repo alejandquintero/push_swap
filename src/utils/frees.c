@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 21:53:47 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/25 23:02:54 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/30 21:30:33 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	free_nbrs(char **str)
 		free(str[i - 1]);
 		i--;
 	}
-	free(str);		
+	free(str);
 }
 
 void	del_one(t_stack *lst)

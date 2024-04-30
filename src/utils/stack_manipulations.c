@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manipulations.c                                    :+:      :+:    :+:   */
+/*   stack_manipulations.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 21:50:35 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/11 21:50:15 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/27 17:25:03 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,22 @@ void	stack_add_front(t_stack **lst, t_stack *new)
 	}
 }
 
+int	stack_length(t_stack *s)
+{
+	int	c;
+
+	c = 0;
+	if (s != NULL)
+	{
+		while (s != NULL)
+		{
+			c++;
+			s = s->next;
+		}
+	}
+	return (c);
+}
+
 t_stack	*stack_last(t_stack *lst)
 {
 	t_stack	*current;
@@ -49,7 +65,7 @@ t_stack	*stack_last(t_stack *lst)
 	return (current);
 }
 
-t_stack	*stack_new(int number, int index)
+t_stack	*stack_new(int number)
 {
 	t_stack	*new_node;
 
@@ -57,7 +73,7 @@ t_stack	*stack_new(int number, int index)
 	if (!new_node)
 		return (NULL);
 	(*new_node).nbr = number;
-	(*new_node).index = index;
+	(*new_node).index = 0;
 	(*new_node).target = NULL;
 	(*new_node).next = NULL;
 	return (new_node);

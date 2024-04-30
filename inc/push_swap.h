@@ -6,7 +6,7 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:28:04 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/25 22:59:50 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/30 21:29:50 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # define ABOVE 0
 # define BELOW 1
+# define MIN_ARGUMENTS 2
 
 # include <stdbool.h>
-# include <stdio.h>
 # include <limits.h>
 # include "../libft/inc/ft_printf.h"
 # include "../libft/inc/libft.h"
@@ -32,7 +32,12 @@ typedef struct s_stack
 }	t_stack;
 
 t_stack	*stack_last(t_stack *lst);
-t_stack	*stack_new(int number, int index);
+t_stack	*stack_new(int number);
+t_stack	*get_min_node(t_stack *s);
+t_stack	*get_max_node(t_stack *s);
+t_stack	*get_cheapest_node(t_stack *a, int len_a, int len_b);
+bool	is_sorted(t_stack *s);
+int		stack_length(t_stack *s);
 void	sa(t_stack **a);
 void	ra(t_stack **a, bool print);
 void	rra(t_stack **a, bool print);
@@ -54,11 +59,6 @@ void	reverse(t_stack **s);
 void	push(t_stack **from, t_stack **to);
 void	sort_three(t_stack **s);
 void	print_sorted_stack(t_stack *a);
-bool	is_sorted(t_stack *s);
-t_stack	*get_min_node(t_stack *s);
-t_stack	*get_max_node(t_stack *s);
-t_stack	*get_cheapest_node(t_stack *a, int len_a, int len_b);
-int		stack_length(t_stack *s);
 void	sort(t_stack **a, t_stack **b);
 void	sort_n(t_stack **a, t_stack **b);
 void	save_index_node(t_stack **s);

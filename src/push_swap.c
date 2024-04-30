@@ -6,16 +6,11 @@
 /*   By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 16:05:38 by aquinter          #+#    #+#             */
-/*   Updated: 2024/04/25 23:14:54 by aquinter         ###   ########.fr       */
+/*   Updated: 2024/04/30 21:19:08 by aquinter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-
-void leaks(void)
-{
-	system("leaks -q push_swap");
-}
 
 long	ft_stol(const char *str)
 {
@@ -25,7 +20,7 @@ long	ft_stol(const char *str)
 
 	i = 0;
 	num = 0;
-	sign = 1;	
+	sign = 1;
 	if (str[i] == '-')
 		sign = -1;
 	if (str[i] == '-')
@@ -64,43 +59,45 @@ bool	valid_syntax(char *nbr)
 	return (true);
 }
 
-int	main(int argc, char *argv[])
+void	build_stack(char *argv[], t_stack **a)
 {
-	int		i;
-	int		j;
 	char	**nbrs;
-	t_stack	*a;
-	t_stack	*b;
 	long	nbr;
-	
-	// atexit(leaks);
-	i = 1;
-	a = NULL;
-	b = NULL;
+	int		i;
+
 	nbrs = NULL;
-	if (argc < 2)
-		error(nbrs, a);
-	if (ft_strlen(argv[i]) < 1)
-		error(nbrs, a);
-	while (argv[i])
+	if (ft_strlen(*argv) < 1)
+		error(nbrs, *a);
+	while (*argv != NULL)
 	{
-		nbrs = ft_split(argv[i], ' ');
-		j = 0;
-		while (nbrs[j] != NULL)
-		{	
-			if (!valid_syntax(nbrs[j]))
-				error(nbrs, a);
-			nbr = ft_stol(nbrs[j]);
+		nbrs = ft_split(*argv, ' ');
+		i = -1;
+		while (nbrs[++i] != NULL)
+		{
+			if (!valid_syntax(nbrs[i]))
+				error(nbrs, *a);
+			nbr = ft_stol(nbrs[i]);
 			if (nbr < INT_MIN || nbr > INT_MAX)
-				error(nbrs, a);
-			if (!is_nbr_unique_in_stack(a, nbr))
-				error(nbrs, a);
-			stack_add_back(&a, stack_new((int)nbr, i + j - 1));
-			j++;
+				error(nbrs, *a);
+			if (!is_nbr_unique_in_stack(*a, nbr))
+				error(nbrs, *a);
+			stack_add_back(a, stack_new((int)nbr));
 		}
 		free_nbrs(nbrs);
-		i++;
+		argv++;
 	}
+}
+
+int	main(int argc, char *argv[])
+{
+	t_stack	*a;
+	t_stack	*b;
+
+	a = NULL;
+	b = NULL;
+	if (argc < MIN_ARGUMENTS)
+		error(NULL, a);
+	build_stack(++argv, &a);
 	if (!is_sorted(a))
 		sort(&a, &b);
 	stack_clear(&a);

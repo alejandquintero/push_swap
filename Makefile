@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 17:53:53 by aquinter          #+#    #+#              #
-#    Updated: 2024/04/25 23:07:08 by aquinter         ###   ########.fr        #
+#    Updated: 2024/04/30 21:27:32 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ INC_DIR = inc/
 OBJ_DIR = obj/
 
 CC = gcc
-CFLAGS = -Wextra -Werror -Wall #-fsanitize=address #-g 
+CFLAGS = -Wextra -Werror -Wall #-g3 #-fsanitize=address #-g 
 IFLAGS = -I$(INC_DIR) -I$(LIBFT_DIR)
 
 RM = rm -rf
@@ -38,8 +38,7 @@ SRC = $(addprefix $(SRC_DIR), \
 	sorting/b_to_a.c \
 	utils/stack_manipulations.c \
 	utils/print_stacks.c \
-	utils/frees.c \
-	utils/stack_length.c)
+	utils/frees.c)
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:$(SRC_DIR)%.c=%.o))
 
