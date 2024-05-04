@@ -3,3 +3,4 @@ libft.a
 push_swap
 traces.txt
 0
+*.DS_Store

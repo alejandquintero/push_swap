@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 17:53:53 by aquinter          #+#    #+#              #
-#    Updated: 2024/04/30 21:27:32 by aquinter         ###   ########.fr        #
+#    Updated: 2024/05/04 15:56:43 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,14 @@ SRC = $(addprefix $(SRC_DIR), \
 	movements/b_stack_ops.c \
 	movements/simultaneous_stack_ops.c \
 	movements/stack_ops.c \
-	sorting/utils.c \
 	sorting/sort.c \
 	sorting/algorithm.c \
 	sorting/a_to_b.c \
 	sorting/b_to_a.c \
 	utils/stack_manipulations.c \
 	utils/print_stacks.c \
+	utils/ft_stol.c \
+	utils/sorting_utils.c \
 	utils/frees.c)
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:$(SRC_DIR)%.c=%.o))
