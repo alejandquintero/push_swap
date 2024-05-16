@@ -6,7 +6,7 @@
 #    By: aquinter <aquinter@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 17:53:53 by aquinter          #+#    #+#              #
-#    Updated: 2024/05/04 15:56:43 by aquinter         ###   ########.fr        #
+#    Updated: 2024/05/16 21:29:25 by aquinter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ INC_DIR = inc/
 OBJ_DIR = obj/
 
 CC = gcc
-CFLAGS = -Wextra -Werror -Wall #-g3 #-fsanitize=address #-g 
+CFLAGS = -Wextra -Werror -Wall #-fsanitize=address #-g3  #-g 
 IFLAGS = -I$(INC_DIR) -I$(LIBFT_DIR)
 
 RM = rm -rf
@@ -60,7 +60,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 all: $(LIBFT) $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(OBJ) -L$(LIBFT_DIR) -lft -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT_DIR) -lft -o $(NAME)
 
 ${LIBFT}:
 	@$(MAKE) -C $(LIBFT_DIR)
